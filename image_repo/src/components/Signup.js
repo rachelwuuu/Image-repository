@@ -8,7 +8,7 @@ export default function Signup() {
         <>
             <Card>
                 <Card.Body>
-                    <h2>Sign Up</h2>
+                    <h2 className="text-center">Sign Up</h2>
                     <Form>
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
@@ -22,7 +22,6 @@ export default function Signup() {
                     </Form>
                 </Card.Body>
             </Card>
-            <div>yea</div>
         </>
     )
 }
