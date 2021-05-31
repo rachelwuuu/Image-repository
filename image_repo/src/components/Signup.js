@@ -22,6 +22,9 @@ export default function Signup() {
                     </Form>
                 </Card.Body>
             </Card>
+            <div className="text-center">
+                Have you got an account before? Log in here. Commeeeeeeeeeeeeeeeeeeeeeeee
+            </div>
         </>
     )
 }
