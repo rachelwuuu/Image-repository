@@ -1,10 +1,29 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import {Form, Button, Card} from 'react-bootstrap'
-
+import { useAuth } from "../contexts/AuthContext"
+import {Link, useHistory} from "react-router-dom"
 export default function Signup() {
     const emailRef=useRef();
     const passwordRef=useRef();
     const passwordConfirmRef=useRef();
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
+    const history=useHistory()
+    async function handleSubmit(e){
+        e.preventDefault()
+        if(passwordRef.current.value !== passwordConfirmRef.current.value) {
+            return setError("Password needs to match")
+        }
+        try {
+            setError("")
+            setLoading(true)
+            history.push("/")//push an entry in the session's history stack
+        }catch{
+            setError("Failed to create account.")
+        }
+        setLoading(false)
+    }
+    
     return (
         <>
             <Card>
