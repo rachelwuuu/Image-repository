@@ -8,6 +8,7 @@ export default function Signup() {
     const passwordRef=useRef();
     const passwordConfirmRef=useRef();
     const [error, setError] = useState("")
+    const {signup} =useAuth()
     const [loading, setLoading] = useState(false)
     const history=useHistory()
     async function handleSubmit(e){
@@ -18,10 +19,11 @@ export default function Signup() {
         try {
             setError("")
             setLoading(true)
-            await Signup(emailRef.current.value, passwordRef.current.value)
-            history.push("/")//push an entry in the session's history stack
+            await signup(emailRef.current.value, passwordRef.current.value)
+            //history.push("/")//push an entry in the session's history stack
         }catch{
-            setError("Failed to create account.")
+            setError("Failed to create account. Password needs to be at least 6 characters")
+            //Make this into a separate error message later
         }
         setLoading(false)
     }

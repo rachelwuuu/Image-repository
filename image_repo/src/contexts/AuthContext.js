@@ -18,7 +18,6 @@ export function AuthProvider({ children }) {
         return unsubscribe
     }, [])
     const value={
-        currentUser,
         signup
     }
     return (
