@@ -10,7 +10,7 @@ function App() {
     <Container className="d-flex align-items-center justify-content-center"
       style={{minHeight:"100vh"}}
     >
-      <div style={{maxWidth:"600px"}}>
+      <div className="w-100" style={{maxWidth:"600px"}}>
       <Router>
         <AuthProvider>
           <Switch>
