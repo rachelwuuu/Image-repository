@@ -6,16 +6,12 @@ import {AuthContext} from "../contexts/AuthContext.js"
 export default function Signup() {
     const emailRef=useRef();
     const passwordRef=useRef();
-    const passwordConfirmRef=useRef();
     const [error, setError] = useState("")
     const {signup} =useAuth()
     const [loading, setLoading] = useState(false)
     const history=useHistory()
     async function handleSubmit(e){
         e.preventDefault()
-        if(passwordRef.current.value !== passwordConfirmRef.current.value) {
-            return setError("Password needs to match")
-        }
         try {
             setError("")
             setLoading(true)
@@ -32,28 +28,21 @@ export default function Signup() {
         <>
             <Card>
                 <Card.Body>
-                    <h2 className="text-center">Sign Up</h2>
+                    <h2 className="text-center">Reset Password</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" ref={emailRef} required/>
                         </Form.Group>
-                        <Form.Group id="password">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" ref={passwordRef} required/>
-                        </Form.Group>
-                        <Form.Group id="password-confirmation">
-                            <Form.Label>Password Confirmation</Form.Label>
-                            <Form.Control type="password" ref={passwordConfirmRef} required/>
-                        </Form.Group>
-                        <Button w-100 disabled={loading} type="submit">Sign Up</Button>
+                        
+                        <Button w-100 disabled={loading} type="submit">Submit</Button>
                     </Form>
                     
                 </Card.Body>
             </Card>
             <div className="text-center">
-                Have you got an account before? Log in <Link to="/login">here</Link>.
+                Log in <Link to="/login">here</Link>.
             </div>
         </>
     )
