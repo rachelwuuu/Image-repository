@@ -5,6 +5,8 @@ import { AuthProvider } from "../contexts/AuthContext";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Dashboard from './Dashboard.js'
 import Login from './Login.js'
+import PrivateRoute from "./PrivateRoute"
+
 function App() {
   return (
     <Container className="d-flex align-items-center justify-content-center"

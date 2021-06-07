@@ -13,6 +13,9 @@ export function AuthProvider({ children }) {
     function login(email, password){
         return auth.signInWithEmailAndPassword(email,password)//If want to use another database other than firebase, just need to change this line (sign up as well, etc.)
     }
+    function logout(){
+        return auth.signOut()
+    }
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user=>{
             setCurrentUser(user)
@@ -22,7 +25,9 @@ export function AuthProvider({ children }) {
     }, [])
     const value={
         signup,
-        login
+        login,
+        currentUser,
+        logout
     }
     return (
         <AuthContext.Provider value={value}>
