@@ -5,20 +5,19 @@ import {Link, useHistory} from "react-router-dom"
 import {AuthContext} from "../contexts/AuthContext.js"
 export default function Signup() {
     const emailRef=useRef();
-    const passwordRef=useRef();
     const [error, setError] = useState("")
-    const {signup} =useAuth()
+    const {resetPasswordEmail} =useAuth()
+    const [message, setMessage] = useState("")
     const [loading, setLoading] = useState(false)
-    const history=useHistory()
     async function handleSubmit(e){
         e.preventDefault()
         try {
             setError("")
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
-            //history.push("/")//push an entry in the session's history stack
+            await resetPasswordEmail(emailRef.current.value)
+            setMessage("Sent password confirmation email.")
         }catch{
-            setError("Failed to create account. Password needs to be at least 6 characters")
+            setError("Failed to reset password")
             //Make this into a separate error message later
         }
         setLoading(false)
@@ -30,6 +29,7 @@ export default function Signup() {
                 <Card.Body>
                     <h2 className="text-center">Reset Password</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
+                    {message && <Alert variant="success">{message}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
