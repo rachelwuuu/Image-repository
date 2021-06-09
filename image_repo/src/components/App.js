@@ -8,6 +8,7 @@ import Login from './Login.js'
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
+import FormSubmit from "./FormSubmit"
 function App() {
   return (
     <Container className="d-flex align-items-center justify-content-center"
@@ -19,6 +20,7 @@ function App() {
           <Switch>
           <PrivateRoute exact path="/" component={Dashboard}/>
           <PrivateRoute exact path='/update-profile' component={UpdateProfile}/>
+          <PrivateRoute exact path='/form-submit' component={FormSubmit}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/login" component={Login}/>
             <Route path="/forgot-password" component={ForgotPassword}></Route>
