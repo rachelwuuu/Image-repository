@@ -8,6 +8,7 @@ const FormSubmit=()=> {
         let selected=e.target.files[0];
         if(selected&&types.includes(selected.type)){
             setFile(selected);
+            setError("");
         }else{
             setFile(null);
             setError("You can't submit files other than png and peg.")
@@ -16,6 +17,10 @@ const FormSubmit=()=> {
     return (
         <form>
             <input type="file" onChange={changeHandler}/>
+            <div className="output">
+                {error&&<div className="error">{error}</div>}
+                {file&&<div>{file.name}</div>}
+            </div>
         </form>
     )
 }
