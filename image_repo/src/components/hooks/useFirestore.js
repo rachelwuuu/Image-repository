@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react"
 import { projectFirestore } from "../../firebase"
 
-export default function useFireStore() {
-    return (
-        <div>
-            
-        </div>
-    )
+const useFireStore = (collection) => {
+    const [docs, setDocs] = useState([]);
+    useEffect(()=>{
+        const unsub = projectFirestore.collection(collection)
+    })
 }
